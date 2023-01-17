@@ -8,9 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "DraggableItem",
+"language": "GDScript",
+"path": "res://src/Items/DraggableItem.gd"
+} ]
+_global_script_class_icons={
+"DraggableItem": ""
+}
+
 [application]
 
 config/name="Work2Close"
+run/main_scene="res://Scenes/TestLevel.tscn"
 config/icon="res://icon.png"
 
 [gui]
