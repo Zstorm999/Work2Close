@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Items/DraggableItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Builder/RecipeBuilder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Items/copper_wire.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,10 +10,14 @@
 position = Vector2( 808, 532 )
 
 [node name="DraggableItem" parent="." instance=ExtResource( 1 )]
-position = Vector2( 327, 257 )
+position = Vector2( 410, 281 )
 
 [node name="DraggableItem2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 464, 264 )
+position = Vector2( 319, 247 )
 
 [node name="DraggableItem3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 230, 265 )
+
+[node name="CopperWire" type="Sprite" parent="."]
+position = Vector2( 337, 342 )
+texture = ExtResource( 3 )

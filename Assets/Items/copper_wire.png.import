@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/item_bar.png-17003839f0d0e93d935550e6e41db29c.stex"
+path="res://.import/copper_wire.png-c93487b213d02ac386cb387d88039f10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/item_bar.png"
-dest_files=[ "res://.import/item_bar.png-17003839f0d0e93d935550e6e41db29c.stex" ]
+source_file="res://Assets/Items/copper_wire.png"
+dest_files=[ "res://.import/copper_wire.png-c93487b213d02ac386cb387d88039f10.stex" ]
 
 [params]
 

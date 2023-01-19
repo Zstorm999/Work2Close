@@ -36,10 +36,6 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(movement)
 
 
-func _process(delta: float) -> void:
-	print(target_item_slot)
-
-
 func set_target(sender: Node):
 	target_item_slot = sender
 

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal is_full(kind)
+
 enum AnimState {EMPTY, FILLING, FULL, BUILDING, DONE, EMPTYING}
 
 const animations = {
@@ -11,6 +13,8 @@ const animations = {
 	AnimState.EMPTYING: "Emptying",
 }
 
+
+var item = -1 # 1 is undefined
 var is_available = true
 var old_state = AnimState.EMPTY
 var current_state = AnimState.EMPTY
@@ -36,6 +40,13 @@ func fill_slot(item: DraggableItem):
 	return true
 
 
+func build():
+	current_state = AnimState.BUILDING
+
+func clear():
+	current_state = AnimState.EMPTYING
+
+
 func _on_body_entered(body: Node) -> void:
 	var item = body as DraggableItem
 	if not item: 
@@ -57,7 +68,13 @@ func _on_animation_finished() -> void:
 	match current_state:
 		AnimState.EMPTY, AnimState.FULL, AnimState.DONE:
 			pass # self contained animations
-		AnimState.BUILDING, AnimState.FILLING:
-			current_state += 1
+		AnimState.BUILDING:
+			current_state = AnimState.DONE
+		AnimState.FILLING:
+			current_state = AnimState.FULL
+			emit_signal("is_full", 0)
 		AnimState.EMPTYING:
 			current_state = AnimState.EMPTY
+			item = -1
+			is_available = true
+			item_sprite.visible = false
