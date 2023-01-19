@@ -460,7 +460,7 @@ recipe_list = ExtResource( 5 )
 [node name="Output" parent="." instance=ExtResource( 4 )]
 position = Vector2( -71.5, 0 )
 scale = Vector2( 1, 1 )
-frame = 9
+frame = 1
 
 [node name="BuilderSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 107 )

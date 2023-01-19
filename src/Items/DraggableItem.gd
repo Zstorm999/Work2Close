@@ -1,9 +1,11 @@
 class_name DraggableItem
 extends KinematicBody2D
 
+export var item_kind = -1
 
 var drag_enabled = false
 var target_item_slot : Node = null
+
 
 onready var original_pos : Vector2 = position
 
@@ -28,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	
 	if drag_enabled:
 		var new_position = get_global_mouse_position()
-		movement = new_position - position
+		movement = new_position - global_position
 	elif target_item_slot == null:
 		# not on target, return to your original position !
 		movement = original_pos - position
@@ -45,6 +47,15 @@ func clear_target(sender: Node):
 	# this can happen if moving too quickly and already entered a new target
 	if target_item_slot == sender:
 		target_item_slot = null
+
+
+func set_item(kind, texture):
+	item_kind = kind
+	$Sprite.texture = texture
+
+
+func get_texture() -> Texture:
+	return $Sprite.texture
 
 
 func on_dropped():

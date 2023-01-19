@@ -1,12 +1,15 @@
 extends Node2D
 
-enum AnimState {NOT_READY, BUILDING, DONE}
+signal spawn_item(kind, pos)
 
+
+enum AnimState {NOT_READY, BUILDING, DONE}
 const animations = {
 	AnimState.NOT_READY: "Empty",
 	AnimState.BUILDING: "Loading",
 	AnimState.DONE: "Done"
 }
+
 
 # RecipeList
 export(Resource) var recipe_list
@@ -32,6 +35,7 @@ func _process(delta: float) -> void:
 		builder_sprite.play(animations[current_state])
 		old_state = current_state
 
+
 func _on_ItemSlot1_is_full(kind) -> void:
 	is_full[0] = true
 
@@ -46,7 +50,7 @@ func _on_ItemSlot3_is_full(kind) -> void:
 
 func _on_BuilderSprite_animation_finished() -> void:
 	if current_state == AnimState.BUILDING:
-		var recipe = recipe_list.search_recipe(slot1.item, slot2.item, slot3.item)
+		var recipe = recipe_list.search_recipe(slot1.item_kind, slot2.item_kind, slot3.item_kind)
 		if recipe == null:
 			print("No recipe found")
 			is_full = [false, false, false]
@@ -59,3 +63,6 @@ func _on_BuilderSprite_animation_finished() -> void:
 		
 		# we found a recipe !
 		print("recipe found :", recipe)
+		
+		var spawn_point = $Output.global_position
+		emit_signal("spawn_item", recipe.result, spawn_point)
