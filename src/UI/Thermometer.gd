@@ -7,6 +7,7 @@ const HEIGHT = 18
 export var current_value = 0
 
 var counter = 0
+var died = false
 
 func _process(delta: float) -> void:
 	counter += 1
@@ -20,7 +21,9 @@ func increment():
 	current_value += 1
 	if current_value == MAX_VALUE +1:
 		current_value = MAX_VALUE
-		print("You died")
+		if !died:
+			print("You died")
+			died = true
 		return
 	
 	$Heated.visible = true

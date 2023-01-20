@@ -55,7 +55,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "Growing",
-"speed": 0.5
+"speed": 0.2
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": false,
@@ -68,5 +68,4 @@ position = Vector2( 342, 80 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Growing"
-frame = 4
 playing = true

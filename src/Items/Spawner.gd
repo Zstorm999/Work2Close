@@ -6,17 +6,24 @@ enum ItemType {
 	COPPER_WIRE,
 	IRON_PLATE,
 	NAIL,
+	WOOD,
+	HAMMER,
+	GEAR,
+	SHOVEL,
 }
 
 const sprites = {
 	ItemType.COPPER_PLATE: preload("res://Assets/Items/copper_plate.png"),
 	ItemType.COPPER_WIRE: preload("res://Assets/Items/copper_wire.png"),
 	ItemType.IRON_PLATE: preload("res://Assets/Items/iron_plate.png"),
-	ItemType.NAIL: preload("res://Assets/Items/nails.png")
+	ItemType.NAIL: preload("res://Assets/Items/nails.png"),
+	ItemType.WOOD: preload("res://Assets/Items/wood.png"),
+	ItemType.HAMMER: preload("res://Assets/Items/hammer.png"),
+	ItemType.GEAR: preload("res://Assets/Items/gear.png"),
+	ItemType.SHOVEL: preload("res://Assets/Items/shovel.png"),
 }
 
 var item: PackedScene = preload("res://src/Items/DraggableItem.tscn")
-
 
 
 func _on_RecipeBuilder_spawn_item(kind, pos) -> void:
