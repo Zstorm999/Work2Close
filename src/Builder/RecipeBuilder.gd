@@ -10,7 +10,6 @@ const animations = {
 	AnimState.DONE: "Done"
 }
 
-
 # RecipeList
 export(Resource) var recipe_list
 

@@ -1,5 +1,5 @@
 class_name Spawner
-extends ResourcePreloader
+extends Node2D
 
 enum ItemType {
 	COPPER_PLATE,
@@ -8,14 +8,16 @@ enum ItemType {
 	NAIL,
 }
 
-var item: PackedScene = preload("res://src/Items/DraggableItem.tscn")
-
-var sprites = {
+const sprites = {
 	ItemType.COPPER_PLATE: preload("res://Assets/Items/copper_plate.png"),
 	ItemType.COPPER_WIRE: preload("res://Assets/Items/copper_wire.png"),
 	ItemType.IRON_PLATE: preload("res://Assets/Items/iron_plate.png"),
 	ItemType.NAIL: preload("res://Assets/Items/nails.png")
 }
+
+var item: PackedScene = preload("res://src/Items/DraggableItem.tscn")
+
+
 
 func _on_RecipeBuilder_spawn_item(kind, pos) -> void:
 	var new_item: DraggableItem = item.instance()

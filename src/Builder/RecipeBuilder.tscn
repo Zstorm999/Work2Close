@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Builder/ItemSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Builder/item_bar.png" type="Texture" id=3]
 [ext_resource path="res://src/Builder/Output.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Builder/Recipes/All_Recipes.tres" type="Resource" id=5]
+[ext_resource path="res://src/Recipe/All_Recipes.tres" type="Resource" id=5]
 
 [sub_resource type="AtlasTexture" id=108]
 atlas = ExtResource( 3 )
@@ -460,7 +460,7 @@ recipe_list = ExtResource( 5 )
 [node name="Output" parent="." instance=ExtResource( 4 )]
 position = Vector2( -71.5, 0 )
 scale = Vector2( 1, 1 )
-frame = 1
+frame = 3
 
 [node name="BuilderSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 107 )

@@ -22,14 +22,14 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Recipe",
 "language": "GDScript",
-"path": "res://src/Builder/Recipes/Recipe.gd"
+"path": "res://src/Recipe/Recipe.gd"
 }, {
 "base": "Resource",
 "class": "RecipeList",
 "language": "GDScript",
-"path": "res://src/Builder/Recipes/RecipeList.gd"
+"path": "res://src/Recipe/RecipeList.gd"
 }, {
-"base": "ResourcePreloader",
+"base": "Node2D",
 "class": "Spawner",
 "language": "GDScript",
 "path": "res://src/Items/Spawner.gd"

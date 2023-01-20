@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://src/Builder/Recipes/RecipeList.gd" type="Script" id=1]
-[ext_resource path="res://src/Builder/Recipes/Recipe.gd" type="Script" id=2]
+[ext_resource path="res://src/Recipe/RecipeList.gd" type="Script" id=1]
+[ext_resource path="res://src/Recipe/Recipe.gd" type="Script" id=2]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )

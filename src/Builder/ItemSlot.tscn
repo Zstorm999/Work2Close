@@ -113,6 +113,7 @@ animations = [ {
 } ]
 
 [node name="ItemSlot" type="Area2D"]
+collision_mask = 2
 input_pickable = false
 script = ExtResource( 2 )
 

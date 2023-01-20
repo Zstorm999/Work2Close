@@ -5,10 +5,10 @@ export var item_kind = -1
 
 var drag_enabled = false
 var target_item_slot : Node = null
-
+var parent_changed = false
 
 onready var original_pos : Vector2 = position
-
+onready var original_parent: Node = get_parent()
 
 func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -25,16 +25,23 @@ func _input(event: InputEvent) -> void:
 			on_dropped()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var movement : Vector2
 	
 	if drag_enabled:
+		if !parent_changed:
+			var new_parent = get_node("/root/Level/Dragging")
+			original_parent.remove_child(self)
+			new_parent.add_child(self)
+			parent_changed = true
+			
 		var new_position = get_global_mouse_position()
 		movement = new_position - global_position
 	elif target_item_slot == null:
 		# not on target, return to your original position !
 		movement = original_pos - position
 	
+# warning-ignore:return_value_discarded
 	move_and_collide(movement)
 
 
@@ -60,6 +67,10 @@ func get_texture() -> Texture:
 
 func on_dropped():
 	if target_item_slot == null:
+		# reset to original parent
+		get_parent().remove_child(self)
+		original_parent.add_child(self)
+		parent_changed = false
 		return
 	
 	var filled = target_item_slot.fill_slot(self)
