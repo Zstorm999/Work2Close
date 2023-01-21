@@ -26,7 +26,7 @@ func increment():
 			died = true
 		return
 	
-	$Heated.visible = true
+	$HBoxContainer/Texture/Heated.visible = true
 	set_sprite()
 
 
@@ -35,10 +35,19 @@ func decrement():
 	if current_value < 0:
 		current_value = 0
 	
-	$Heated.visible = false
+	$HBoxContainer/Texture/Heated.visible = false
 	set_sprite()
+
+
+func set_cracks_number(number):
+	if number == 0:
+		$HBoxContainer/Texture/Heated.visible = false
+	
+	$HBoxContainer/Label.text = String(number)
 
 
 func set_sprite():
 	var region = Rect2(WIDTH * current_value, 0, WIDTH, HEIGHT)
-	$Texture.texture.region = region
+	$HBoxContainer/Texture.texture.region = region
+
+

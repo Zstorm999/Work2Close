@@ -427,13 +427,14 @@ position = Vector2( 862, 549 )
 scale = Vector2( 3, 3 )
 
 [node name="Thermometer" parent="UI" instance=ExtResource( 8 )]
-anchor_left = 0.701
+anchor_left = 0.984
 anchor_top = 0.007
-anchor_bottom = 0.041
-margin_left = 0.176025
+anchor_right = 0.984
+anchor_bottom = 0.107
+margin_left = -48.616
 margin_top = -0.2
-margin_right = -207.0
-margin_bottom = -0.6
+margin_right = 95.384
+margin_bottom = -40.2
 rect_scale = Vector2( 3, 3 )
 
 [node name="RecipeScroller" parent="UI" instance=ExtResource( 12 )]
@@ -451,4 +452,5 @@ script = ExtResource( 3 )
 [node name="Dragging" type="Node2D" parent="."]
 
 [connection signal="input_event" from="Dragzone/Area2D" to="Dragzone" method="_on_input_event"]
+[connection signal="crack_number_changed" from="Dragzone/Content/WallDestroyer" to="UI/Thermometer" method="set_cracks_number"]
 [connection signal="spawn_item" from="UI/RecipeBuilder" to="UI/BuilderSpawner" method="_on_RecipeBuilder_spawn_item"]

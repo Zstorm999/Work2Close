@@ -10,6 +10,7 @@ enum ItemType {
 	HAMMER,
 	GEAR,
 	SHOVEL,
+	WALLFIXER,
 }
 
 const sprites = {
