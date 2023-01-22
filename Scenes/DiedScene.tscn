@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/DiedScene.gd" type="Script" id=1]
 
 [sub_resource type="DynamicFontData" id=2]
-font_path = "res://Assets/fonts/OregonLdo-d9q7.ttf"
+font_path = "res://Assets/fonts/SnootorgPixel10-vmzM.ttf"
 
 [sub_resource type="DynamicFont" id=3]
 size = 45
@@ -12,11 +12,25 @@ font_data = SubResource( 2 )
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="DynamicFontData" id=4]
-font_path = "res://Assets/fonts/OregonLdo-d9q7.ttf"
+font_path = "res://Assets/fonts/SnootorgPixel10-vmzM.ttf"
 
 [sub_resource type="DynamicFont" id=5]
-size = 45
+size = 30
 font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Assets/fonts/SnootorgPixel10-vmzM.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 21
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://Assets/fonts/SnootorgPixel10-vmzM.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+size = 21
+font_data = SubResource( 8 )
 
 [node name="DiedScene" type="ColorRect"]
 anchor_right = 1.0
@@ -37,7 +51,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 357.0
-margin_bottom = 47.0
+margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Too hot !"
@@ -46,45 +60,47 @@ valign = 1
 uppercase = true
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
-margin_top = 51.0
+margin_top = 49.0
 margin_right = 357.0
-margin_bottom = 68.0
+margin_bottom = 66.0
 custom_constants/separation = 17
 custom_styles/separator = SubResource( 1 )
 
 [node name="Survived" type="Label" parent="VBoxContainer"]
-margin_top = 72.0
+margin_top = 70.0
 margin_right = 357.0
-margin_bottom = 119.0
+margin_bottom = 100.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "You survived XX:XX"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 123.0
+margin_top = 104.0
 margin_right = 357.0
-margin_bottom = 149.0
+margin_bottom = 130.0
 custom_constants/separation = 26
 custom_styles/separator = SubResource( 1 )
 
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
-margin_top = 153.0
+margin_top = 134.0
 margin_right = 357.0
-margin_bottom = 173.0
+margin_bottom = 162.0
+custom_fonts/font = SubResource( 7 )
 text = "Restart"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 177.0
+margin_top = 166.0
 margin_right = 357.0
-margin_bottom = 184.0
+margin_bottom = 173.0
 custom_constants/separation = 7
 custom_styles/separator = SubResource( 1 )
 
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
-margin_top = 188.0
+margin_top = 177.0
 margin_right = 357.0
-margin_bottom = 208.0
+margin_bottom = 205.0
+custom_fonts/font = SubResource( 9 )
 text = "Main menu"
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
