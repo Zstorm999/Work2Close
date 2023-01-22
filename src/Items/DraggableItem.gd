@@ -1,6 +1,8 @@
 class_name DraggableItem
 extends KinematicBody2D
 
+signal destroyed()
+
 export var item_kind = -1
 
 var drag_enabled = false
@@ -10,20 +12,21 @@ var parent_changed = false
 onready var original_pos : Vector2 = position
 onready var original_parent: Node = get_parent()
 
+
 func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
-			drag_enabled = event.pressed
-			if !event.pressed:
+			if not event.pressed and drag_enabled:
 				on_dropped()
+			drag_enabled = event.pressed
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:
-			drag_enabled = false
-			if position != original_pos:
+			if drag_enabled and position != original_pos:
 				on_dropped()
+			drag_enabled = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -44,6 +47,10 @@ func _physics_process(_delta: float) -> void:
 	
 # warning-ignore:return_value_discarded
 	move_and_collide(movement)
+
+
+func connect_caller(caller: Node):
+	connect("destroyed", caller, "on_item_destroyed")
 
 
 func set_target(sender: Node):
@@ -76,8 +83,12 @@ func on_dropped():
 	
 	var filled = target_item_slot.fill_slot(self)
 	if filled:
+		emit_signal("destroyed")
 		queue_free()
 	else:
 		# if the target was not available, we simply invalidate it
 		# this will reset the item position on the next frame
+		get_parent().remove_child(self)
+		original_parent.add_child(self)
+		parent_changed = false
 		target_item_slot = null

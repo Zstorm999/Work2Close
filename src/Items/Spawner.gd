@@ -28,10 +28,11 @@ const sprites = {
 var item: PackedScene = preload("res://src/Items/DraggableItem.tscn")
 
 
-func _on_spawn_item(kind, pos) -> void:
+func _on_spawn_item(kind, pos, caller) -> void:
 	var new_item: DraggableItem = item.instance()
 	add_child(new_item)
 	
+	new_item.connect_caller(caller)
 	new_item.global_position =  pos
 	new_item.original_pos = new_item.position
 	new_item.scale = Vector2(2, 2)

@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 
 func fill_slot(item: DraggableItem):
 	if not is_available:
+		print("refused")
 		return false
 	
 	item_kind = item.item_kind

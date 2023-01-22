@@ -1,6 +1,6 @@
 extends Node2D
 
-signal spawn_item(kind, pos)
+signal spawn_item(kind, pos, caller)
 
 
 enum AnimState {NOT_READY, BUILDING, DONE}
@@ -52,16 +52,20 @@ func _on_BuilderSprite_animation_finished() -> void:
 		var recipe = recipe_list.search_recipe(slot1.item_kind, slot2.item_kind, slot3.item_kind)
 		if recipe == null:
 			print("No recipe found")
-			is_full = [false, false, false]
-			slot1.clear()
-			slot2.clear()
-			slot3.clear()
-			
-			current_state = AnimState.NOT_READY
+			on_item_destroyed()
 			return
 		
 		# we found a recipe !
 		print("recipe found :", recipe)
 		
 		var spawn_point = $Output.global_position
-		emit_signal("spawn_item", recipe.result, spawn_point)
+		emit_signal("spawn_item", recipe.result, spawn_point, self)
+
+
+func on_item_destroyed():
+	is_full = [false, false, false]
+	slot1.clear()
+	slot2.clear()
+	slot3.clear()
+	
+	current_state = AnimState.NOT_READY

@@ -6,11 +6,14 @@ var status = 1
 var is_not_taken = true
 
 func fill_slot(item: DraggableItem):
-	if !is_not_taken:
+	if not is_not_taken:
+		print("refused")
 		return false
 	
 	if item.item_kind != Spawner.ItemType.WALLFIXER:
 		return false
+	
+	is_not_taken = false
 	
 	# fixing a crack makes it less dangerous
 	status = 1
