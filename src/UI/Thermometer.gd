@@ -6,15 +6,7 @@ const HEIGHT = 18
 
 export var current_value = 0
 
-var counter = 0
 var died = false
-
-func _process(delta: float) -> void:
-	counter += 1
-	
-	if counter == 10:
-		increment()
-		counter = 0
 
 
 func increment():
@@ -22,7 +14,10 @@ func increment():
 	if current_value == MAX_VALUE +1:
 		current_value = MAX_VALUE
 		if !died:
+			GlobalTimer.paused = true
 			print("You died")
+			print("You survived ", GlobalTimer.get_minutes(), ":", GlobalTimer.get_seconds())
+			get_tree().change_scene("res://Scenes/DiedScene.tscn")
 			died = true
 		return
 	

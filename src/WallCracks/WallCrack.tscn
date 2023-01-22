@@ -104,7 +104,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[node name="DropZone" type="Area2D"]
+[node name="WallCrack" type="Area2D"]
 collision_mask = 2
 script = ExtResource( 3 )
 
@@ -115,7 +115,6 @@ shape = SubResource( 23 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Growing"
-frame = 4
 playing = true
 
 [node name="Fixer" type="AnimatedSprite" parent="."]
@@ -125,3 +124,5 @@ frames = SubResource( 22 )
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="frame_changed" from="Crack" to="." method="_on_Crack_frame_changed"]
+[connection signal="animation_finished" from="Fixer" to="." method="_on_Fixer_animation_finished"]

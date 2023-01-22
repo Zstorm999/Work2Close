@@ -22,16 +22,18 @@ const sprites = {
 	ItemType.HAMMER: preload("res://Assets/Items/hammer.png"),
 	ItemType.GEAR: preload("res://Assets/Items/gear.png"),
 	ItemType.SHOVEL: preload("res://Assets/Items/shovel.png"),
+	ItemType.WALLFIXER: preload("res://Assets/Items/wall_fixer.png"),
 }
 
 var item: PackedScene = preload("res://src/Items/DraggableItem.tscn")
 
 
-func _on_RecipeBuilder_spawn_item(kind, pos) -> void:
+func _on_spawn_item(kind, pos) -> void:
 	var new_item: DraggableItem = item.instance()
 	add_child(new_item)
 	
-	new_item.position = pos
-	new_item.original_pos = pos
+	new_item.global_position =  pos
+	new_item.original_pos = new_item.position
 	new_item.scale = Vector2(2, 2)
 	new_item.set_item(kind, sprites[kind])
+

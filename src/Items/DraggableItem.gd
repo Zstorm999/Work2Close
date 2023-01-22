@@ -22,7 +22,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:
 			drag_enabled = false
-			on_dropped()
+			if position != original_pos:
+				on_dropped()
 
 
 func _physics_process(_delta: float) -> void:

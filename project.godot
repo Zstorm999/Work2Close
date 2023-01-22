@@ -48,6 +48,10 @@ config/name="Work2Close"
 run/main_scene="res://Scenes/TestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalTimer="*res://src/Autoload/Global_Timer.tscn"
+
 [display]
 
 window/size/resizable=false

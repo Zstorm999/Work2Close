@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Items/DraggableItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Builder/RecipeBuilder.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/UI/arrow.png" type="Texture" id=7]
 [ext_resource path="res://src/UI/Thermometer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/WallCracks/WallDestroyer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Buildings/Box.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/UI/RecipeScroller.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
@@ -360,16 +361,36 @@ tile_data = PoolIntArray( 0, 11, 0, 1, 10, 0, 2, 10, 0, 3, 11, 0, 4, 10, 0, 5, 1
 [node name="WallDestroyer" parent="Dragzone/Content" instance=ExtResource( 9 )]
 spawn_zone = Rect2( 17, 17, 1022, 108 )
 
+[node name="FixerBox" parent="Dragzone/Content" instance=ExtResource( 10 )]
+position = Vector2( 179, 296 )
+item_kind = 8
+quantity = 3
+
+[node name="WireBox" parent="Dragzone/Content" instance=ExtResource( 10 )]
+position = Vector2( 274, 296 )
+item_kind = 1
+quantity = 3
+
+[node name="GearBox" parent="Dragzone/Content" instance=ExtResource( 10 )]
+position = Vector2( 365, 296 )
+item_kind = 6
+quantity = 3
+
+[node name="NailBox" parent="Dragzone/Content" instance=ExtResource( 10 )]
+position = Vector2( 453, 296 )
+item_kind = 3
+quantity = 3
+
 [node name="DraggableItem2" parent="Dragzone/Content" instance=ExtResource( 1 )]
-position = Vector2( 272, 338 )
+position = Vector2( 423, 369 )
 item_kind = 0
 
 [node name="DraggableItem" parent="Dragzone/Content" instance=ExtResource( 1 )]
-position = Vector2( 200, 315 )
+position = Vector2( 243, 387 )
 item_kind = 0
 
 [node name="DraggableItem3" parent="Dragzone/Content" instance=ExtResource( 1 )]
-position = Vector2( 180, 215 )
+position = Vector2( 321, 370 )
 item_kind = 0
 
 [node name="RightArrow" type="Sprite" parent="Dragzone"]
@@ -386,13 +407,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1055.0
+margin_bottom = 631.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RecipeZoneBg" type="Node2D" parent="UI"]
 scale = Vector2( 3, 3 )
@@ -431,26 +455,29 @@ anchor_left = 0.984
 anchor_top = 0.007
 anchor_right = 0.984
 anchor_bottom = 0.107
-margin_left = -48.616
-margin_top = -0.2
-margin_right = 95.384
-margin_bottom = -40.2
+margin_left = -76.12
+margin_top = 2.583
+margin_right = 68.88
+margin_bottom = -37.517
 rect_scale = Vector2( 3, 3 )
 
 [node name="RecipeScroller" parent="UI" instance=ExtResource( 12 )]
-anchor_left = 0.705
-anchor_top = 0.115
-anchor_right = 0.989
+anchor_left = 0.672
+anchor_top = 0.097
+anchor_right = 0.973
 anchor_bottom = 0.817
-margin_left = 0.0799561
-margin_right = -193.736
-margin_bottom = -0.200012
+margin_left = 12.0399
+margin_top = -0.207001
+margin_right = -199.711
+margin_bottom = -11.765
 
 [node name="BuilderSpawner" type="Node2D" parent="UI"]
 script = ExtResource( 3 )
 
 [node name="Dragging" type="Node2D" parent="."]
+position = Vector2( 3, 4 )
 
 [connection signal="input_event" from="Dragzone/Area2D" to="Dragzone" method="_on_input_event"]
 [connection signal="crack_number_changed" from="Dragzone/Content/WallDestroyer" to="UI/Thermometer" method="set_cracks_number"]
-[connection signal="spawn_item" from="UI/RecipeBuilder" to="UI/BuilderSpawner" method="_on_RecipeBuilder_spawn_item"]
+[connection signal="increment" from="Dragzone/Content/WallDestroyer" to="UI/Thermometer" method="increment"]
+[connection signal="spawn_item" from="UI/RecipeBuilder" to="UI/BuilderSpawner" method="_on_spawn_item"]
